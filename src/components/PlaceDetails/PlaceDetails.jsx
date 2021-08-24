@@ -18,8 +18,10 @@ import useStyles from "./styles";
 const PlaceDetails = ({ place, selected, refProp }) => {
   const classes = useStyles();
 
-  if (selected)
+  if (selected) {
+    console.log({ refProp });
     refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   return (
     <Card elevation={6}>
@@ -35,7 +37,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
           {place.name}
         </Typography>
         <Box display="flex" justifyContent="space-between">
-          <Rating value={Number(place.rating)} readyOnly />
+          <Rating value={Number(place.rating)} readOnly />
           <Typography gutterBottom variant="subtitle1">
             out of {place.num_reviews} reviews
           </Typography>
@@ -65,8 +67,8 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             </Typography>
           </Box>
         ))}
-        {place?.cuisine?.map(({ name }) => (
-          <Chip key={name} size="small" label={name} className={classes.chip} />
+        {place?.cuisine?.map(({ name, i }) => (
+          <Chip key={i} size="small" label={name} className={classes.chip} />
         ))}
         {place?.address && (
           <Typography

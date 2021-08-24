@@ -42,11 +42,7 @@ const Map = ({
               <LocationOnOutlinedIcon color="primary" fontSize="large" />
             ) : (
               <Paper elevation={3} className={classes.paper}>
-                <Typography
-                  className={classes.typography}
-                  variant="subtitle2"
-                  gutterBottom
-                >
+                <Typography variant="subtitle2" gutterBottom>
                   {place.name}
                 </Typography>
                 <img
@@ -58,7 +54,7 @@ const Map = ({
                   }
                   alt={place.name}
                 />
-                <Rating size="small" value={Number(place.rating)} readyOnly />
+                <Rating size="small" value={Number(place.rating)} readOnly />
               </Paper>
             )}
           </div>
