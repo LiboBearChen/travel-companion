@@ -13,6 +13,9 @@ const App = () => {
   const [coordinates, setCoordinates] = useState({});
   const [bounds, setBounds] = useState(null);
 
+  const [type, setType] = useState("restaurants");
+  const [rating, setRating] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
