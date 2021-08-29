@@ -13,7 +13,7 @@ const App = () => {
   const [childClicked, setChildClicked] = useState(null);
 
   const [coordinates, setCoordinates] = useState({});
-  const [bounds, setBounds] = useState(null);
+  const [bounds, setBounds] = useState({});
 
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
@@ -34,14 +34,15 @@ const App = () => {
   }, [rating]);
 
   useEffect(() => {
-    if (bounds) {
+    if (bounds.sw && bounds.ne) {
+      setIsLoading(true);
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-        setPlaces(data);
+        setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
         setFilteredPlaces([]);
         setIsLoading(false);
       });
     }
-  }, [type, coordinates, bounds]);
+  }, [type, bounds]);
 
   return (
     <>
