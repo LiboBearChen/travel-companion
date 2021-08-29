@@ -12,6 +12,7 @@ const Map = ({
   coordinates,
   places,
   setChildClicked,
+  weatherData
 }) => {
   const classes = useStyles();
   const isDesktop = useMediaQuery("(min-width:600px)");
@@ -57,6 +58,11 @@ const Map = ({
                 <Rating size="small" value={Number(place.rating)} readOnly />
               </Paper>
             )}
+          </div>
+        ))}
+        {weatherData?list?map((data,i)=>(
+          <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
+            <img src={} />
           </div>
         ))}
       </GoogleMapReact>
